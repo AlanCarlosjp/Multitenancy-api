@@ -2,8 +2,8 @@ spring:
   jpa:
     database: POSTGRESQL
     show-sql: true
-    hibernate:
-      ddl-auto: create-drop
+  main:
+    allow-circular-references: true
   datasource:
     url: jdbc:postgresql://localhost:5432/master
     username: zieltech

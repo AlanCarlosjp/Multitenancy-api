@@ -1,5 +1,6 @@
 package com.test.multitenancyteste.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,22 +10,21 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.UUID;
-
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-public class TenantInfos {
+@Entity(name = "DataSourceConfig")
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class DataSourceConfig {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
-
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String name;
-    private String driverClassName;
+    private String url;
     private String username;
     private String password;
-    private String url;
+    private String driverClassName;
+    private boolean initialize;
 }
